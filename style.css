@@ -1,0 +1,94 @@
+*{
+    /* لإزالة الهوامش والتباعد في الصفحة */
+    padding: 0;
+    margin: 0;
+    /* لتحديد أن حجم العناصر يشمل سمك الحدود والحشو. */
+    box-sizing: border-box;
+}
+
+:root {
+    /* الالوان */
+    --orange: #F8FAE5;
+    --winning-blocks: #43766C;
+}
+
+body {
+    /* لون الخط */
+    color: var(--orange);
+    /* نوع الخط */
+    font-family: 'Finger Paint', cursive;
+}
+h1 {
+    /* حجم الخط */
+    font-size: 54px;
+    text-transform: uppercase;
+}
+
+/* تعيين حشو (padding) إلى 40 بكسل، وارتفاع (height) إلى 100vh (ارتفاع العرض الظاهري للشاشة)، 
+ومحاذاة المركز الأفقي والعمودي، وتوجيه العناصر إلى العمود. */
+.container {
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--winning-blocks);
+}
+/* 
+العنصر بمعرف gameboard (#gameboard): تعيين عرض (width) إلى 300 بكسل، وعرض مرن (flex-wrap) للعناصر الموجودة داخله، وتعيين هوامش أعلى (margin-top) إلى 40 بكسل.
+الصندوق (box): تعيين ارتفاع (height) إلى 100 بكسل، وعرض (width) إلى 100 بكسل، ومحاذاة العناصر في المركز الأفقي والعمودي، وتعيين لون النص إلى البرتقالي المحدد في المتغير المخصص (--orange)، وحجم الخط إلى 120 بكسل، وحدود يمينية (border-right) وسفلية (border-bottom) بعرض 2 بكسل.
+الصندوق الثالث في كل صف (box:nth-child(3n)): إزالة الحدود اليمنى للصناديق الثالثة في كل صف.
+الصندوق السادس وما بعده (box:nth-child(6) ~ .box): إزالة الحدود السفلية للصناديق ابتداءً من الصندوق السادس.
+ */
+#gameboard {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+/*
+الزر (button): تعيين حشو (padding) إلى 10 بكسل عموديًا و 20 بكسل 
+ وتدوير الحواف (border-radius) إلى 10 بكسل لإنشاء زوايا مستديرة،
+  وتعيين لون الخلفية (background-color) إلى البرتقالي المحدد في المتغير المخصص (--orange)
+  ، وتعيين لون النص إلى #333، وتعيين لون الحدود (border-color) إلى البرتقالي المحدد في المتغير المخصص (--orange)
+  ، وتعيين حجم الخط إلى 18 بكسل، وتحويل النص إلى خط عريض (bold)
+  ، وتأثير الانتقال (transition) لتحويل الزر عند التحويم (hover) لمدة 200 ميلي ثانية،
+ وتعيين سمك الخط (font-weight) إلى 600. 
+ */
+.box {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+    font-size: 100px;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+}
+.box:nth-child(3n) {
+    border-right: none;
+}
+.box:nth-child(6) ~ .box {
+    border-bottom: none;
+} 
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--orange);
+    color: #333;
+    border-color: var(--orange);
+    font-size: 18px;
+    transition: 200ms transform;
+    font-weight: 600;
+}
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+
+/*
+التحويم فوق الزر (button:hover): تعيين مؤشر الفأرة إلى الشكل الافتراضي (cursor: pointer)، وتحويل الزر قليلاً لأعلى (translateY(-2px)). 
+ */
